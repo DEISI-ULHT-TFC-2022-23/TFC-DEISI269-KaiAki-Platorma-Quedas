@@ -14,6 +14,8 @@ export class User{
     @Column()
     createdAt:  Date;
 
+    @Column()
+    email: string;
     
 
 
