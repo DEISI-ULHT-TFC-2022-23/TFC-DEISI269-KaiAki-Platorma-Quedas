@@ -6,6 +6,7 @@ import { User } from './typeorm/entities/User';
 import { UsersModule } from './users/users.module';
 
 import { UsersController } from './user/controllers/users/users.controller';
+import { Profile } from './typeorm/entities/Profile';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -15,7 +16,7 @@ import { UsersController } from './user/controllers/users/users.controller';
     username:'mj',
     password:'hello',
     database:'nestjs_mysql_kaiaki',
-    entities:[User],
+    entities:[User,Profile],
     synchronize:true,
 
   }), UsersModule,],
