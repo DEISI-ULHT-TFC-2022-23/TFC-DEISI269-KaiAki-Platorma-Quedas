@@ -2,7 +2,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({ name:'user_profile'})
 export class Profile{
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn({ type: 'bigint' })
     id: number;
 
     @Column()
@@ -15,7 +15,13 @@ export class Profile{
     age:number;
 
 
+    @Column({ unique: true })
+    username: string;
+
+    @Column({ nullable: true })
+    authStrategy: string;
+
     @Column()
-    dob:string;
+    dob:Date;
 
 }

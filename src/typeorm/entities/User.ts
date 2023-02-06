@@ -10,13 +10,13 @@ export class User{
     username: string;
 
     @Column()
-    password: string;
+    password: String;
 
     @Column()
     createdAt:  Date;
 
-    @Column()
-    email: string;
+    @Column({ unique: true })
+    email: String;
     
     @Column({nullable: true})
     authStrategy: string;
@@ -24,5 +24,8 @@ export class User{
     @OneToOne(() => Profile )
     @JoinColumn()
     profile: Profile
+
+
+    
 
 }
