@@ -24,4 +24,6 @@ export class Profile{
     @Column()
     dob:Date;
 
+    
+
 }

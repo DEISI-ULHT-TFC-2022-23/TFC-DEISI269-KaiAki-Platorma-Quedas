@@ -7,16 +7,21 @@ import { UsersModule } from './users/users.module';
 
 import { UsersController } from './user/controllers/users/users.controller';
 import { Profile } from './typeorm/entities/Profile';
+import { HistoricoQueda } from './typeorm/entities/HistoricoQuedas';
+import { ProfessionalSaude } from './typeorm/entities/ProfessionalSaude';
+import { Queda } from './typeorm/entities/Queda';
+import { Patient } from './typeorm/entities/Patient';
+import { Notificacao } from './typeorm/entities/Notificacao';
+
 
 @Module({
   imports: [TypeOrmModule.forRoot({
     type:'mysql',
     host:'localhost',
-    port: 3306,
     username:'mj',
     password:'hello',
     database:'nestjs_mysql_kaiaki',
-    entities:[User,Profile],
+    entities:[User,Profile,HistoricoQueda,ProfessionalSaude,Queda,Patient,Notificacao],
     synchronize:true,
 
   }), UsersModule,],

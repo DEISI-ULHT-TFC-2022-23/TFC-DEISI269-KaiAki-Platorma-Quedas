@@ -9,23 +9,45 @@ export class Patient{
     firstName: string;
 
     @Column()
+    numeroTelefone: string;
+
+    @Column()
+    email: string;
+
+    @Column()
+    password:string;
+
+    @Column()
+    altura: number;
+
+    @Column()
+    peso: number;
+
+    @Column({type:"double"})
+    tempQueda: number;
+
+    @Column({ type: "double" })
+    tempMax: number;
+
+    @Column({ type: "double" })
+    tempMin: number;
+
+    @Column()
     lastName: string;
 
     @Column()
     createdAt: Date;
 
     @Column()
-    age: number;
+    idade: number;
 
 
     @Column()
-    dob: Date;
+    datanascimento: Date;
 
-    @Column()
-    weight : Double;
+    
 
-    @Column()
-    height: Double;
+
 
     @Column()
     diabetes : boolean;
