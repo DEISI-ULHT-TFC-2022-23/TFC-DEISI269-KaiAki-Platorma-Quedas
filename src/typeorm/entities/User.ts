@@ -1,3 +1,4 @@
+import { IsEmail } from "class-validator";
 import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Profile } from "./Profile";
 
@@ -6,17 +7,14 @@ export class User{
     @PrimaryGeneratedColumn( {type:'bigint'})
     id:number;
 
-    @Column( {unique:true})
-    username: string;
-
     @Column()
-    password: String;
+    password: string;
 
     @Column()
     createdAt:  Date;
 
     @Column({ unique: true })
-    email: String;
+    email: string;
     
     @Column({nullable: true})
     authStrategy: string;

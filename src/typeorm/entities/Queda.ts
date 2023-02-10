@@ -17,10 +17,13 @@ export class Queda {
 
 
     @Column({ type: "varchar" })
-    nomePaciente: Patient;
+    nomePaciente: Patient["nome"];
 
-    @Column({ type: "bigint" })
-    paciente_id: Patient;
+    @OneToOne(() => Patient)
+    @JoinColumn()
+    pacient_id: Patient["id"];
+
+
 
     @Column({ type: 'double'})
     tempPaciente: number;

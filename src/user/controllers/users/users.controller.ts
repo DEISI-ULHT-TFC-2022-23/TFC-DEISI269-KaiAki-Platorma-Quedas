@@ -1,28 +1,50 @@
-import { Body,Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
+import { Body,Controller, Delete, Get, HttpException, HttpStatus, Inject, Param, ParseBoolPipe, ParseIntPipe, Post, Put, Query, UsePipes, ValidationPipe } from '@nestjs/common';
+import { UseGuards } from '@nestjs/common/decorators';
 import { createSecureServer } from 'http2';
 import { CreateUserDto } from 'src/users/dtos/CreateUser.dto';
 import { CreateUserProfileDto } from 'src/users/dtos/CreateUserProfile.dto';
 import { UpdateserDto } from 'src/users/dtos/UpdateUser.dto';
+import { AuthGuard } from 'src/users/guards/auth/auth.guard';
+import { ValidateCreateUserPipe } from 'src/users/pipes/validate-create-user/validate-create-user.pipe';
 
 import { UsersService } from 'src/users/services/users/users.service';
 import { brotliDecompressSync } from 'zlib';
 
 @Controller('users')
+  
 export class UsersController {
-    constructor(private userService:UsersService ){}
+    constructor(@Inject('USER_SERVICE') private readonly userService: UsersService){}
 
+
+
+  @UseGuards(AuthGuard)
     @Get()
-   async getUsers(){
+   async getUsers( ){
+    
+
       const users= await this.userService.findUsers();
       return users;
 
     }
 
-    @Post()
-    createUser(@Body() CreateUserDto: CreateUserDto) {
+    @Post('create')
+    @UsePipes(new ValidationPipe() )
+    createUser(@Body(ValidateCreateUserPipe) CreateUserDto: CreateUserDto) {
+      console.log(CreateUserDto);
        return this.userService.createUser(CreateUserDto);
 
     }
+
+    @Get(':id')
+    getUserbyID(@Param('id', ParseIntPipe) id:number): any{
+
+      const user= this.userService.fetchUserById(id);
+      if(!user) 
+        throw new HttpException (' User not found', HttpStatus.BAD_REQUEST);
+
+        return user;
+
+    } 
 
 
     @Put(':id')

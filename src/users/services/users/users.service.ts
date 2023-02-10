@@ -1,30 +1,55 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { encodePassword } from 'src/auth/Utils/bcrypt';
 import { Profile } from 'src/typeorm/entities/Profile';
 import { User } from 'src/typeorm/entities/User';
+import { CreateUserDto } from 'src/users/dtos/CreateUser.dto';
 import { CreateUserParams, CreateUserProfileParams, UpdateUserParams } from 'src/utils/types';
 import { Repository } from 'typeorm';
 
 @Injectable()
 export class UsersService {
 
-    constructor(@InjectRepository(User) private userRepository: Repository <User>,
+    constructor(@InjectRepository(User) private  readonly userRepository: Repository <User>,
         @InjectRepository(Profile) private profileRepository: Repository<Profile>,
     
     )
     
-    {
+  {
 
+
+
+    
+
+    } 
+
+    createUser(userDetails: CreateUserParams) {
+        const password = encodePassword(userDetails.password);
+        console.log(password);
+        const newUser = this.userRepository.create({ ...userDetails, password, createdAt: new Date(), });
+        return this.userRepository.save(newUser);
     }
+
 
     findUsers(){
        return this.userRepository.find({relations: ['profile']});
     }
 
-    createUser(userDetails: CreateUserParams){
-        const newUser = this.userRepository.create({...userDetails, createdAt: new Date(),});
-       return this.userRepository.save(newUser);
+    findUserByEmail(email: string){
+
+     return this.userRepository.findOneBy({ email });
+
+       
+
+
+     
     }
+
+    fetchUserById(id: number){
+     return null;
+    }
+
+
 
 
     updateUser(id: number,updateUserDetails: UpdateUserParams){

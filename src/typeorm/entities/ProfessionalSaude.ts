@@ -1,5 +1,7 @@
-import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, OneToMany } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, OneToMany, JoinColumn, OneToOne } from "typeorm";
+import { HistoricoQueda } from "./HistoricoQuedas";
 import { Patient } from "./Patient";
+
 
 @Entity({ name: 'professinoalSaude', synchronize: false })
 export class ProfessionalSaude{
@@ -32,8 +34,6 @@ export class ProfessionalSaude{
      created_at: Date;
 
     
-
-
     @Column({ unique: true })
     username: string;
 
@@ -43,10 +43,18 @@ export class ProfessionalSaude{
     @Column()
     dob:Date;
 
-    @OneToMany((type) => Patient, (patients) => patients.firstName)
+    @OneToMany((type) => Patient, (patients) => patients.nome)
     ListaPacientes: Patient[];
 
-    
+    @OneToOne(() => Patient)
+    @JoinColumn()
+    patient_id: Patient["id"];
 
+
+
+
+    @OneToOne(() => HistoricoQueda)
+    @JoinColumn()
+    historicoQueda: HistoricoQueda;
 
 }

@@ -1,4 +1,6 @@
 import { Column, Double, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { HistoricoQueda } from "./HistoricoQuedas";
+import { ProfessionalSaude } from "./ProfessionalSaude";
 
 @Entity({name:'patients'})
 export class Patient{
@@ -6,7 +8,7 @@ export class Patient{
     id: number;
 
     @Column()
-    firstName: string;
+     nome: string;
 
     @Column()
     numeroTelefone: string;
@@ -32,10 +34,8 @@ export class Patient{
     @Column({ type: "double" })
     tempMin: number;
 
-    @Column()
-    lastName: string;
 
-    @Column()
+    @Column( { type: "datetime"})
     createdAt: Date;
 
     @Column()
@@ -46,6 +46,15 @@ export class Patient{
     datanascimento: Date;
 
     
+   @OneToOne( () => HistoricoQueda)
+   @JoinColumn()
+   historicoQueda: HistoricoQueda
+
+
+
+    @OneToOne(() => ProfessionalSaude)
+    @JoinColumn()
+    professionalSaude: ProfessionalSaude
 
 
 

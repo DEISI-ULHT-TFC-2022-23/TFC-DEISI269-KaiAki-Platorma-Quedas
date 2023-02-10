@@ -12,6 +12,8 @@ import { ProfessionalSaude } from './typeorm/entities/ProfessionalSaude';
 import { Queda } from './typeorm/entities/Queda';
 import { Patient } from './typeorm/entities/Patient';
 import { Notificacao } from './typeorm/entities/Notificacao';
+import { PatientsModule } from './patients/patients.module';
+import { AuthModule } from './auth/auth.module';
 
 
 @Module({
@@ -24,7 +26,7 @@ import { Notificacao } from './typeorm/entities/Notificacao';
     entities:[User,Profile,HistoricoQueda,ProfessionalSaude,Queda,Patient,Notificacao],
     synchronize:true,
 
-  }), UsersModule,],
+  }), UsersModule, PatientsModule, AuthModule,],
   controllers: [AppController],
   providers: [AppService],
 })
