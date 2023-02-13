@@ -14,6 +14,10 @@ import { Patient } from './typeorm/entities/Patient';
 import { Notificacao } from './typeorm/entities/Notificacao';
 import { PatientsModule } from './patients/patients.module';
 import { AuthModule } from './auth/auth.module';
+import { ProfessinoalSaudeModule } from './professinoal-saude/professinoal-saude.module';
+import { QuedaModule } from './queda/queda.module';
+import { NotificacaoModule } from './notificacao/notificacao.module';
+import { HistoricoQuedaModule } from './historico-queda/historico-queda.module';
 
 
 @Module({
@@ -26,7 +30,7 @@ import { AuthModule } from './auth/auth.module';
     entities:[User,Profile,HistoricoQueda,ProfessionalSaude,Queda,Patient,Notificacao],
     synchronize:true,
 
-  }), UsersModule, PatientsModule, AuthModule,],
+  }), UsersModule, PatientsModule, AuthModule, ProfessinoalSaudeModule, QuedaModule, NotificacaoModule, HistoricoQuedaModule,],
   controllers: [AppController],
   providers: [AppService],
 })
