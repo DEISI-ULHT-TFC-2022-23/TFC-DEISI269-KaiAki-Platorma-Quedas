@@ -8,6 +8,7 @@ import { AuthGuard } from 'src/users/guards/auth/auth.guard';
 import { ValidateCreateUserPipe } from 'src/users/pipes/validate-create-user/validate-create-user.pipe';
 
 import { UsersService } from 'src/users/services/users/users.service';
+import { CreateUserParams } from 'src/utils/types';
 import { brotliDecompressSync } from 'zlib';
 
 @Controller('users')
@@ -28,12 +29,20 @@ export class UsersController {
     }
 
     @Post('create')
-    @UsePipes(new ValidationPipe() )
-    createUser(@Body(ValidateCreateUserPipe) CreateUserDto: CreateUserDto) {
+    createUser(CreateUserDto: CreateUserDto) {
       console.log(CreateUserDto);
        return this.userService.createUser(CreateUserDto);
 
+
     }
+
+
+
+
+
+
+
+
 
     @Get(':id')
     getUserbyID(@Param('id', ParseIntPipe) id:number): any{

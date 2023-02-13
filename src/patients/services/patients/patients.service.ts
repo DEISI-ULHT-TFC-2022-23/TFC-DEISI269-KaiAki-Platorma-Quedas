@@ -11,9 +11,6 @@ constructor(@InjectRepository(Patient) private patientRepository: Repository<Pat
 
 }
 
- findPatients(){
-
- }
 
  createPatient(patientDetails : CreatePatientParams){
 

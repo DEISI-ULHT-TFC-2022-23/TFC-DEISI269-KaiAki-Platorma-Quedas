@@ -12,6 +12,7 @@ confirmEmail:string;
 
 @IsStrongPassword()
 @IsNotEmpty()
+
 password: string;
 
 @IsStrongPassword()

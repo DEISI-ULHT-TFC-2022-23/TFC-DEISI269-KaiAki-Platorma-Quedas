@@ -52,7 +52,6 @@ export class ProfessionalSaude{
 
 
 
-
     @OneToOne(() => HistoricoQueda)
     @JoinColumn()
     historicoQueda: HistoricoQueda;

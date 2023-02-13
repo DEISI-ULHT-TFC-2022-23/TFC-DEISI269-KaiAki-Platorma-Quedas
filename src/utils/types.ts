@@ -2,8 +2,9 @@ import { Exclude } from "class-transformer";
 import { Double } from "typeorm";
 
 export type CreateUserParams ={
-
+    
     password: string;
+
     email:string;
 
 }

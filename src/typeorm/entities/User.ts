@@ -7,13 +7,13 @@ export class User{
     @PrimaryGeneratedColumn( {type:'bigint'})
     id:number;
 
-    @Column()
+    @Column({type:'varchar'})
     password: string;
 
     @Column()
     createdAt:  Date;
 
-    @Column({ unique: true })
+    @Column({ unique: true})
     email: string;
     
     @Column({nullable: true})
