@@ -1,6 +1,6 @@
 /* Global styles */
 body {
-    background-color: #F7F8FA;
+    background: linear-gradient(to bottom right, #00adb5, #393e46);
     font-family: 'Segoe UI', sans-serif;
     margin: 0;
     padding: 0;
@@ -10,13 +10,13 @@ h1 {
     margin-top: 50px;
     margin-bottom: 30px;
     text-align: center;
-    color: #2D2D2D;
+    color: #FFFFFF;
     font-size: 2.5rem;
 }
 
 /* Header styles */
 header {
-    background-color: #FFFFFF;
+    background-color: #222831;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -36,17 +36,17 @@ header {
 }
 
 nav a {
-    color: #800080;
+    color: palevioletred;
     font-size: 1.2rem;
     text-decoration: none;
-    border: 1px solid #800080;
+    border: 1px solid plum;
     border-radius: 5px;
     padding: 10px 20px;
     transition: all 0.2s ease-in-out;
 }
 
 nav a:hover {
-    background-color: #800080;
+    background-color: #800099;
     color: #FFFFFF;
 }
 
@@ -70,6 +70,8 @@ main {
 
 .month-selector-container label {
     margin-right: 10px;
+    color: floralwhite;
+    font-weight: bold;
 }
 
 @media (max-width: 768px) {

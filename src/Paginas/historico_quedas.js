@@ -13,7 +13,7 @@ const fallData = {
             } else if (value >= 5) {
                 return 'rgba(255, 206, 86, 0.8)';
             }
-            return 'rgba(75, 192, 192, 0.8)';
+            return 'rgba(60, 179, 113, 0.8)';
         },
         borderColor: 'rgba(128, 0, 128, 1)',
         borderWidth: 1,
@@ -30,35 +30,35 @@ const chart = new Chart(ctx, {
             y: {
                 title: {
                     display: true,
-                    text: 'Number of Falls',
-                    color: 'black',
+                    text: 'Numero de Quedas',
+                    color: 'white',
                     font: {
-                        size: 16
+                        size: 22
                     }
                 },
                 beginAtZero: true,
                 grid: {
-                    color: 'rgba(255, 255, 255, 0.1)'
+                    color: 'rgba(255, 255, 255, 0.5)'
                 },
                 ticks: {
-                    color: 'black',
+                    color: 'white',
                     stepSize: 1
                 }
             },
             x: {
                 title: {
                     display: true,
-                    text: 'Day of the Month',
-                    color: 'black',
+                    text: 'Dia do Mês',
+                    color: 'white',
                     font: {
-                        size: 16
+                        size: 22
                     }
                 },
                 grid: {
-                    color: 'rgba(255, 255, 255, 0.1)'
+                    color: 'rgba(255, 255, 255, 0.5)'
                 },
                 ticks: {
-                    color: 'black'
+                    color: 'white'
                 }
             }
         },
@@ -67,18 +67,20 @@ const chart = new Chart(ctx, {
                 display: false
             },
             tooltip: {
-                backgroundColor: 'rgba(128, 0, 128, 0.8)',
+                backgroundColor: 'rgba(128, 0, 128, 0.9)',
                 titleColor: 'white',
                 bodyColor: 'white',
-                borderColor: 'rgba(255, 255, 255, 0.2)',
+                borderColor: 'rgba(255, 255, 255, 0.7)',
                 borderWidth: 1,
                 borderRadius: 8,
                 callbacks: {
                     label: function (context) {
-                        const value = context.parsed.y;
-                        return `Quedas: ${value}`;
+                        const label = `Dia: ${context.chart.data.labels[context.dataIndex]}`;
+                        const value = `Quedas: ${context.parsed.y}`;
+                        return `${label} ${value}`;
                     }
                 }
+
             },
             hover: {
                 mode: 'nearest',
@@ -119,7 +121,6 @@ async function fetchDataAndUpdateChart() {
     }
 }
 
-fetchDataAndUpdateChart();
 
 monthSelector.addEventListener('change', () => {
     fetchDataAndUpdateChart();
