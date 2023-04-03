@@ -1,0 +1,139 @@
+/* Reset styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.invalid-feedback {
+    color: red;
+    display: none;
+}
+
+html,
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Global styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    background-color: #f0f2f5;
+    min-height: 100vh;
+}
+
+.container {
+    width: 80%;
+    max-width: 600px;
+    margin: 50px auto;
+    text-align: center;
+    flex-grow: 1;
+}
+
+form {
+    background-color: #ffffff;
+    padding: 30px;
+    margin-top: 20px;
+    border-radius: 5px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #222831;
+    font-size: 36px;
+    font-weight: 500;
+}
+
+.form-control {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+}
+
+.form-group label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    color: #222831;
+    font-weight: 500;
+}
+
+.login-btn {
+    font-size: 1.25rem;
+    background-color: #00adb5;
+    color: white;
+    width: 100%;
+    padding: 12px 20px;
+    text-align: center;
+    margin-top: 20px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.login-btn:hover {
+    background-color: #008a99;
+}
+
+.bottom-links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.bottom-links a {
+    color: #00adb5;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.bottom-links a:hover {
+    text-decoration: underline;
+}
+
+/* Media queries for mobile optimization */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+
+    .login-btn {
+        font-size: 20px;
+        padding: 10px 30px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    form {
+        padding: 20px 10px;
+    }
+
+    .form-control {
+        font-size: 0.75rem;
+    }
+
+    .form-group label {
+        font-size: 0.875rem;
+    }
+
+    .bottom-links a {
+        font-size: 0.875rem;
+    }
+}

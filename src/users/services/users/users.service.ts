@@ -1,4 +1,4 @@
-import { Body, HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { BadRequestException, Body, HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { encodePassword } from 'src/auth/Utils/bcrypt';
 import { Profile } from 'src/typeorm/entities/Profile';
@@ -26,8 +26,11 @@ export class UsersService {
     createUser(@Body() userDetails: CreateUserParams) {
       const password = encodePassword(userDetails.password);
       console.log(password);
-        const newUser = this.userRepository.create({ ...userDetails,  createdAt: new Date(), });
+        const newUser = this.userRepository.create({ ...userDetails, password,  createdAt: new Date(), });
         return this.userRepository.save(newUser);
+
+
+       
     }
 
 

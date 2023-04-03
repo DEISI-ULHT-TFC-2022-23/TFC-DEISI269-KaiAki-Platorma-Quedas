@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Definições de Utilizador</title>
+    <link rel="stylesheet" href="definicoes.css">
+</head>
+
+<body>
+    <header>
+        <h1>Definições de Utilizador</h1>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <form>
+                <h2>Informações Pessoais</h2>
+                <div class="input-group">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" name="name" placeholder="Digite o seu nome" required>
+                </div>
+
+                    <div class="input-group">
+                <label for="apelido">Apelido</label>
+            <input type="text" id="apelido" name="apelido" placeholder="Digite o seu apelido" required>
+                    </div>
+
+            <div class="input-group">
+                <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Digite o seu email" required>
+            </div>
+
+
+            <div class="input-group">
+            <label for="phone">Telemovel</label>
+        <input type="tel" id="phone" name="phone" placeholder="Digite o seu telemovel" required>
+            </div>
+
+            <div class="input-group">
+            <label for="altura">Altura</label>
+        <input type="number" id="altura" name="altura" placeholder="Digite a sua altura" required>
+            </div>
+
+
+            <div class="input-group">
+            <label for="peso">Peso</label>
+        <input type="number" id="peso" name="peso" placeholder="Digite o seu peso" required
+            </div>
+
+
+            <div class="input-group">
+                <label for="peso">Diabetes</label>
+        <select id="diabetes" name="diabetes" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="1">Sim</option>
+            <option value="0">Não</option>
+        </select>
+     
+            </div>
+
+            <div class="input-group">
+        <label for="dataNascimento">Data Nascimento</label>
+<input type="date" id="dataNascimento" name="dataNascimento" placeholder="Digite a sua data de nascimento" required>
+            </div>
+
+                <h2>Mudar Password</h2>
+                <div class="input-group">
+                    <label for="current-password">Password Atual</label>
+            <input type="password" id="current-password" name="current-password" placeholder="Digite a password atual" required>
+                </div>
+
+
+                    <div class="input-group">
+                    <label for="new-password">Nova Password</label>
+        <input type="password" id="new-password" name="new-password" placeholder="Digite a nova password" required>
+                    </div>
+
+
+        <div class="input-group">
+    <label for="confirm-password">Confirmar Password</label>
+<input type="password" id="confirm-password" name="confirm-password" placeholder="Confirme a nova password" required>
+        </div>
+
+                <button type="submit">Guardar Mudanças</button>
+
+            <button type="button" class="btn btn-secondary" onclick="location.href='';">Voltar</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="#">Voltar</a></li>
+                <li><a href="#">Sobre nos</a></li>
+                <li><a href="#">Contacte-nos</a></li>
+            </ul>
+        </nav>
+    </footer>
+</body>
+
+</html>

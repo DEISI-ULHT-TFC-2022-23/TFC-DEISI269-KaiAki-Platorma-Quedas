@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mais Informação</title>
+    <link rel="stylesheet" href="mais_informacao.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="https://i.ibb.co/m5N6v5n/logo.png" alt="KaiAki logo" class="logo">
+        </div>
+        <nav>
+            <a href="#" class="back-btn"><i class="fas fa-arrow-left"></i> Voltar</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Mais Informação</h1>
+        <div class="month-selector-container">
+            <label for="month-selector">Selecione o mês:</label>
+            <select id="month-selector">
+                <option value="1">Janeiro</option>
+                <option value="2">Fevereiro</option>
+                <option value="3">Março</option>
+                <option value="4">Abril</option>
+                <option value="5">Maio</option>
+                <option value="6">Junho</option>
+                <option value="7">Julho</option>
+                <option value="8">Agosto</option>
+                <option value="9">Setembro</option>
+                <option value="10">Outubro</option>
+                <option value="11">Novembro</option>
+                <option value="12">Dezembro</option>
+            </select>
+        </div>
+        <div class="charts-container">
+            <div class="chart-container">
+                <canvas id="temperatureChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="fallChart"></canvas>
+            </div>
+        </div>
+    </main>
+    <script src="mais_informacao.js"></script>
+</body>
+
+</html>

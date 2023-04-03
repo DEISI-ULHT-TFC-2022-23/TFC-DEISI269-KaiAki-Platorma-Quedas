@@ -1,0 +1,150 @@
+body,
+html {
+    height: 100%;
+}
+
+.warnings {
+    display: flex;
+    margin: 30px;
+    height: calc(100% - 60px);
+}
+
+.sidebar {
+    background-color: #222831;
+    color: #ffffff;
+    width: 300px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar .doctor {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.sidebar .doctor i {
+    font-size: 48px;
+    margin-right: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+.sidebar li i {
+    font-size: 32px;
+    margin-right: 20px;
+}
+
+.sidebar li span {
+    font-size: 24px;
+}
+
+.content {
+    flex-grow: 1;
+    background-color: #f0f2f5;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.recent-fall {
+    display: flex;
+    align-items: center;
+    background-color: #ff9800;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 26px;
+    margin-bottom: 30px;
+}
+
+.recent-fall i {
+    margin-left: 20px;
+}
+
+.patient-info {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.patient-header {
+    display: flex;
+    align-items: center;
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+.patient-header i {
+    margin-left: 20px;
+}
+
+.patient-info ul {
+    list-style: none;
+}
+
+.patient-info li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.patient-info li i {
+    font-size: 28px;
+    margin-right: 20px;
+}
+
+.patient-info li span {
+    font-size: 28px;
+}
+
+.back-btn {
+    display: inline-block;
+    background-color: #00adb5;
+    color: #ffffff;
+    padding: 14px 35px;
+    margin-top: 30px;
+    text-decoration: none;
+    font-size: 24px;
+    border-radius: 30px;
+    transition: all 0.3s ease-in-out;
+}
+
+.back-btn:hover {
+    background-color: #008a99;
+}
+
+.back-btn i {
+    margin-right: 15px;
+}
+
+/* Media queries for mobile optimization */
+@media screen and (max-width: 768px) {
+    .warnings {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .patient-header {
+        font-size: 26px;
+    }
+
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="login.css" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Bem vindo de volta!</h1>
+        <form id="loginForm" method="post">
+            <div class="form-group">
+                <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+                        placeholder="Insira o seu email" autofocus>
+
+                <div class="invalid-feedback">
+                    Por favor, insira um endereço de email válido.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Insira a sua password">
+                <div class="invalid-feedback">
+                    Por favor, insira uma password válida.
+                </div>
+            </div>
+            <button type="submit" class="login-btn">Entrar</button>
+        </form>
+        <div class="bottom-links">
+            <a href="/register">Não tenho uma Conta</a>
+            <a href="/forgot-password">Esqueci-me da password</a>
+        </div>
+        </div>
+
+
+
+        <script>
+    document.getElementById("email").addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementById("password").focus();
+        }
+    });
+
+            document.getElementById("loginForm").addEventListener("submit", async (event) => {
+                event.preventDefault();
+
+                const email = document.getElementById("email").value;
+                const password = document.getElementById("password").value;
+
+                // Replace the URL with your NestJS backend API endpoint
+                const url = "https://your-nestjs-backend-url.com/api/login";
+
+                try {
+                    const response = await fetch(url, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            email: email,
+                            password: password,
+                        }),
+                    });
+
+                    const data = await response.json();
+
+                    // Handle the response from the server (e.g., display a success message or store JWT token)
+                    console.log(data);
+
+                } catch (error) {
+                    console.error("Error:", error);
+                }
+            });
+        </script>
+        </body>
+        
+        </html>
