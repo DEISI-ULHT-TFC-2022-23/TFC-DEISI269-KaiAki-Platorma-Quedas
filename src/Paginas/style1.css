@@ -7,7 +7,9 @@
 
 /* Global styles */
 body {
-    background-color: #f0f2f5;
+
+        background: linear-gradient(to bottom right, #00adb5, #393e46);
+    
     /* Changed background color */
     color: #222831;
     font-family: 'Roboto', sans-serif;
@@ -18,6 +20,10 @@ body {
     align-items: center;
     flex-direction: column;
     /* Added to allow header and footer */
+}
+p{
+    color: #f0f2f5;
+
 }
 
 .container {
@@ -38,8 +44,10 @@ body {
 }
 
 .email {
-    font-size: 20px;
+
+    font-size: 40px;
     margin-bottom: 40px;
+    margin-right: 20px;
 }
 
 .back-btn,
@@ -47,11 +55,17 @@ body {
     margin-top: 20px;
     background-color: #00adb5;
     color: #FFFFFF;
+    margin: 10px;
+    
+}
+.back-btn:hover{
+    background-color: darkblue;
+    color: #00adb5;
 }
 
-.back-btn:hover,
+
 .feedback-btn:hover {
-    background-color: #393e46;
+    background-color: rebeccapurple;
     color: #00adb5;
 }
 
@@ -75,7 +89,7 @@ a {
     }
 
     .email {
-        font-size: 16px;
+        font-size: 20px;
         margin-bottom: 30px;
     }
 
