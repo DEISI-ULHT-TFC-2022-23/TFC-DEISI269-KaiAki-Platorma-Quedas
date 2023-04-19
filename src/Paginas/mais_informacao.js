@@ -36,7 +36,7 @@ const temperatureChart = new Chart(temperatureCtx, {
                 title: {
                     display: true,
                     text: 'Temperatura (ºC)',
-                    color: 'black',
+                    color: 'white',
                     font: {
                         size: 16
                     }
@@ -46,14 +46,14 @@ const temperatureChart = new Chart(temperatureCtx, {
                     color: 'rgba(255, 255, 255, 0.1)'
                 },
                 ticks: {
-                    color: 'black'
+                    color: 'white'
                 }
             },
             x: {
                 title: {
                     display: true,
                     text: 'Dia do Mês',
-                    color: 'black',
+                    color: 'white',
                     font: {
                         size: 16
                     }
@@ -62,7 +62,7 @@ const temperatureChart = new Chart(temperatureCtx, {
                     color: 'rgba(255, 255, 255, 0.1)'
                 },
                 ticks: {
-                    color: 'black'
+                    color: 'white'
                 }
             }
         },
@@ -124,8 +124,8 @@ const fallChart = new Chart(fallCtx, {
             y: {
                 title: {
                     display: true,
-                    text: 'Number of Falls',
-                    color: 'black',
+                    text: 'Numero de Quedas',
+                    color: 'white',
                     font: {
                         size: 16
                     }
@@ -135,15 +135,15 @@ const fallChart = new Chart(fallCtx, {
                     color: 'rgba(255, 255, 255, 0.1)'
                 },
                 ticks: {
-                    color: 'black',
+                    color: 'white',
                     stepSize: 1
                 }
             },
             x: {
                 title: {
                     display: true,
-                    text: 'Day of the Month',
-                    color: 'black',
+                    text: 'Dia do Mês',
+                    color: 'white',
                     font: {
                         size: 16
                     }
@@ -152,7 +152,7 @@ const fallChart = new Chart(fallCtx, {
                     color: 'rgba(255, 255, 255, 0.1)'
                 },
                 ticks: {
-                    color: 'black'
+                    color: 'white'
                 }
             }
         },
@@ -182,6 +182,99 @@ const fallChart = new Chart(fallCtx, {
         }
     }
 });
+
+// Adicione isso ao seu arquivo JavaScript
+const lowerLimitInput = document.getElementById("lower-limit");
+const lowerLimitValue = document.getElementById("lower-limit-value");
+const upperLimitInput = document.getElementById("upper-limit");
+const upperLimitValue = document.getElementById("upper-limit-value");
+const saveLimitsBtn = document.getElementById("save-limits");
+
+// Função para atualizar os campos de texto com os valores dos sliders
+function updateLimitValues() {
+    lowerLimitValue.value = lowerLimitInput.value;
+    upperLimitValue.value = upperLimitInput.value;
+}
+
+// Inicializar os campos de texto com os valores iniciais dos sliders
+updateLimitValues();
+
+// Adicionar event listeners para atualizar os campos de texto quando os sliders mudarem
+lowerLimitInput.addEventListener("input", updateLimitValues);
+upperLimitInput.addEventListener("input", updateLimitValues);
+
+// Função para salvar
+// Função para salvar os limites no back-end
+async function saveTemperatureLimits() {
+    try {
+        const lowerLimit = parseFloat(lowerLimitValue.value);
+        const upperLimit = parseFloat(upperLimitValue.value);
+
+        // Verificar se os limites são válidos
+        if (lowerLimit >= upperLimit) {
+            alert("O limite inferior deve ser menor que o limite superior.");
+            return;
+        }
+
+        const response = await fetch("/api/temperature-limits", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                lowerLimit,
+                upperLimit
+            })
+        });
+
+        const result = await response.json();
+
+        if (result.status === "success") {
+            alert("Limites de temperatura salvos com sucesso!");
+        } else {
+            alert("Ocorreu um erro ao salvar os limites de temperatura. Por favor, tente novamente.");
+        }
+    } catch (error) {
+        console.error("Error saving temperature limits:", error);
+        alert("Ocorreu um erro ao salvar os limites de temperatura. Por favor, tente novamente.");
+    }
+}
+
+
+
+
+
+const modeSwitchBtn = document.getElementById("mode-switch-btn");
+let realtimeMode = false;
+
+function switchMode() {
+    realtimeMode = !realtimeMode;
+
+    if (realtimeMode) {
+        modeSwitchBtn.textContent = "Mudar para modo em tempo real";
+        // Ativar modo em tempo real
+        // 1. Conectar-se ao WebSocket para receber dados em tempo real
+        // 2. Atualizar gráficos em tempo real com os dados recebidos
+        // 3. Adicionar gráfico de posição corporal
+    } else {
+        modeSwitchBtn.textContent = "Mudar para modo histórico";
+        // Desativar modo em tempo real
+        // 1. Desconectar-se do WebSocket
+        // 2. Parar de atualizar gráficos em tempo real
+        // 3. Remover gráfico de posição corporal
+        // 4. Atualizar gráficos com dados históricos (fetchDataAndUpdateCharts())
+    }
+}
+
+modeSwitchBtn.addEventListener("click", switchMode);
+
+
+
+
+
+// Adicionar um event listener ao botão Salvar Limites
+saveLimitsBtn.addEventListener("click", saveTemperatureLimits);
+
 
 async function fetchDataAndUpdateCharts() {
     try {

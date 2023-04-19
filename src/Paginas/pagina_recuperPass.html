@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Password Recovery - KaiAki</title>
+    <title>Recuperar Password - KaiAki</title>
     <link rel="stylesheet" href="pass.css">
 </head>
 
@@ -26,13 +26,13 @@
 
 <main>
     <div class="form-container">
-        <h2>Forgot Password</h2>
-        <p>Enter your email below and we will send you a link to reset your password.</p>
+        <h2>Esqeuceu Password</h2>
+        <p>Insira o seu e-mail e será enviado um link para mudar a sua password</p>
         <form>
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            <input type="email" id="email" name="email" placeholder="Introduza o seu email" required>
 
-            <button type="submit">Send Recovery Email</button>
+            <button type="submit">Enviar Email de Recuperação</button>
             <button type="button" class="btn-voltar" onclick="window.history.back();">Voltar</button>
         </form>
     </div>
@@ -46,6 +46,37 @@
         </ul>
     </nav>
 </footer>
+<script>
+
+    const resetPasswordForm = document.querySelector('form');
+
+        resetPasswordForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+
+            try {
+                const response = await fetch('/auth/reset-password', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email }),
+                });
+
+                if (response.ok) {
+                    alert('Password reset email sent. Please check your email.');
+                } else {
+                    alert('Error: Failed to send password reset email.');
+                }
+            } catch (error) {
+                console.error(error);
+                alert('Error: Failed to send password reset email.');
+            }
+        });
+
+</script>
+
 </body>
 
 

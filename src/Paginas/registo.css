@@ -16,7 +16,7 @@ body {
 body {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
-    background-color: #f0f2f5;
+background: linear-gradient(to bottom right, #00adb5, #393e46);
 }
 
 .container {
@@ -121,12 +121,12 @@ label {
 }
 
 .btn-secondary {
-    background-color: #6c757d;
+    background-color: palevioletred;
     color: white;
 }
 
 .btn-secondary:hover {
-    background-color: #5a6268;
+    background-color: #800099;
 }
 
 button[type="submit"] {

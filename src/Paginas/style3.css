@@ -1,12 +1,22 @@
 body,
 html {
     height: 100%;
+    margin: 0;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+body{
+    background: linear-gradient(to bottom right, #00adb5, #393e46); 
 }
 
 .warnings {
     display: flex;
-    margin: 30px;
-    height: calc(100% - 60px);
+    height: 100%;
+    margin: 0;
 }
 
 .sidebar {
@@ -52,7 +62,7 @@ html {
 
 .content {
     flex-grow: 1;
-    background-color: #f0f2f5;
+    background: linear-gradient(to bottom right, #00adb5, #393e46);
     padding: 30px;
     display: flex;
     flex-direction: column;
@@ -62,7 +72,7 @@ html {
 .recent-fall {
     display: flex;
     align-items: center;
-    background-color: #ff9800;
+    background-color: #ff6600;
     color: #ffffff;
     padding: 20px;
     border-radius: 8px;
@@ -72,6 +82,21 @@ html {
 
 .recent-fall i {
     margin-left: 20px;
+}
+
+.export-btn {
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.2rem;
+    margin: 10px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
 }
 
 .patient-info {
@@ -112,18 +137,18 @@ html {
 
 .back-btn {
     display: inline-block;
-    background-color: #00adb5;
+    background-color: palevioletred;
     color: #ffffff;
     padding: 14px 35px;
     margin-top: 30px;
     text-decoration: none;
-    font-size: 24px;
-    border-radius: 30px;
+    font-size: 26px;
+    border-radius: 8px;
     transition: all 0.3s ease-in-out;
 }
 
 .back-btn:hover {
-    background-color: #008a99;
+    background-color: #800099;
 }
 
 .back-btn i {

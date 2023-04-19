@@ -20,6 +20,11 @@
     </header>
     <main>
         <h1>Mais Informação</h1>
+
+        <div class="mode-selector-container">
+            <button id="mode-switch-btn">Mudar para modo em tempo real</button>
+        </div>
+
         <div class="month-selector-container">
             <label for="month-selector">Selecione o mês:</label>
             <select id="month-selector">
@@ -37,6 +42,25 @@
                 <option value="12">Dezembro</option>
             </select>
         </div>
+
+<div class="temperature-limits-container">
+    <h2>Definir Limites de Temperatura</h2>
+    <div class="limit-input-container">
+        <label for="lower-limit">Limite Inferior:</label>
+        <input type="range" id="lower-limit" min="-50" max="50" step="0.1">
+        <input type="number" id="lower-limit-value" min="-50" max="50" step="0.1">
+    </div>
+    <div class="limit-input-container">
+        <label for="upper-limit">Limite Superior:</label>
+        <input type="range" id="upper-limit" min="-50" max="50" step="0.1">
+        <input type="number" id="upper-limit-value" min="-50" max="50" step="0.1">
+    </div>
+<div class="button-container">
+    <button id="save-limits">Salvar Limites</button>
+</div>
+</div>
+
+
         <div class="charts-container">
             <div class="chart-container">
                 <canvas id="temperatureChart"></canvas>
