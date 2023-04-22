@@ -4,6 +4,9 @@
     margin: 0;
     padding: 0;
 }
+h2 a {
+    color: #ffffff;
+}
 
 html,
 body {

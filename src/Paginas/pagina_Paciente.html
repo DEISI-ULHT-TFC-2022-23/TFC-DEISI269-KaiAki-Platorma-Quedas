@@ -20,26 +20,36 @@
                 <span>Sr. X</span>
             </div>
             <ul>
+            <a href="pagina_Paciente.html">
                 <li>
                     <i class="fas fa-home"></i>
-                    <span>Home</span>
+                    <span> Home</span>
                 </li>
+            </a>
+            <a href="pagina_HistoricoQuedas.html">
                 <li>
                     <i class="fas fa-history"></i>
-                    <span>Histórico</span>
+                    <span> Histórico</span>
                 </li>
+            </a>
+            <a href="pagina_Paciente.html">
                 <li>
                     <i class="fas fa-exclamation-triangle"></i>
-                    <span>Avisos Queda</span>
+                    <span> Avisos Queda</span>
                 </li>
+            </a>
+            <a href="#">
                 <li>
                     <i class="fas fa-sign-out-alt"></i>
-                    <span>Logout</span>
+                    <span> Logout</span>
                 </li>
+            </a>
+            <a href="pagina_definicoes.html">
                 <li>
                     <i class="fas fa-cog"></i>
-                    <span>Definições</span>
+                    <span> Definições</span>
                 </li>
+            </a>
             </ul>
         </div>
         <div class="content">
@@ -64,10 +74,15 @@
                         <i class="fas fa-thermometer-half"></i>
                         Temperatura Momento da Queda: 36.5ºC
                     </li>
-                    <li>
-                        <i class="fas fa-info-circle"></i>
-                        Mais informações
-                    </li>
+
+                            <a href="pagina_maisInfo.html">
+                        <li>
+                            <i class="fas fa-info-circle"></i>
+                            Mais informações
+                        </li>
+                            </a>
+
+
                 </ul>
             </div>
             <a href="#" class="back-btn">
@@ -76,7 +91,15 @@
             </a>
         </div>
     </section>
+<script>
+    function goBack(event) {
+        event.preventDefault();
+        console.log('Going back');
+        window.history.back();
+    }
 
+
+</script>
  
 
 </body>

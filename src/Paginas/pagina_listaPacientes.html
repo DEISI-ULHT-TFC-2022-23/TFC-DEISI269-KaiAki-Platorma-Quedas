@@ -18,7 +18,7 @@
                 <p>Veja a lista de pacientes e acesse informações relevantes sobre cada um.</p>
             </div>
         </header>
-            <a href="#" class="back-btn"><i class="fas fa-arrow-left"></i> Voltar</a>
+            <a href="#" onclick="goBack()" class="back-btn"><i class="fas fa-arrow-left"></i> Voltar</a>
         </div>
 
         <div class="patient-list">
@@ -38,5 +38,13 @@
         </div>
     </main>
 </body>
+
+<script>
+    function goBack() {
+        event.preventDefault();
+        window.history.go(-1);
+    }
+</script>
+
 
 </html>

@@ -10,13 +10,23 @@
 
 <body>
 
-
     <div class="container">
         <h1 class="title">Contacte-nos</h1>
         <p class="email">Email: <a href="mailto:contact@domain.com">contact@domain.com</a></p>
         <a href="index.html" class="feedback-btn">Feedback</a>
-        <a href="index.html" class="back-btn">Voltar</a>
+<a href="#" onclick="goBack()" class="back-btn">Voltar</a>
+
+
     </div>
+
+    <script>
+            function goBack() {
+                event.preventDefault();
+            window.history.go(-1);
+    }
+    </script>
+
+    </script>
 
 </body>
 

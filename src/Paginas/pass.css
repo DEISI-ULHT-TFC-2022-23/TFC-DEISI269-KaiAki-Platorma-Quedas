@@ -31,6 +31,17 @@ body {
     align-items: center;
 }
 
+
+h2 a {
+    color: white;
+}
+
+h2 a:hover {
+    color: #ffffff;
+}
+h2 a:hover {
+    color: #ffffff;
+}
 .left h2 {
     margin-right: 20px;
     cursor: pointer;

@@ -56,7 +56,7 @@
 
             <!-- Submit Button -->
             <button type="submit" class="btn btn-primary">Registar</button>
-<button type="button" class="btn btn-secondary" onclick="location.href='home.html';">Voltar</button>
+<button type="button" class="btn btn-secondary"  onclick="goBack()">Voltar</button>
 
 
         </form>
@@ -67,6 +67,11 @@
             event.preventDefault(); // Prevent default form submission behavior
             validateForm();
         });
+
+           function goBack() {
+                event.preventDefault();
+                window.history.go(-1);
+            }
 
     function validateForm() {
         // Get form input values

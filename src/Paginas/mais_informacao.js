@@ -241,7 +241,10 @@ async function saveTemperatureLimits() {
 }
 
 
-
+function goBack() {
+    event.preventDefault();
+    window.history.go(-1);
+}
 
 
 const modeSwitchBtn = document.getElementById("mode-switch-btn");

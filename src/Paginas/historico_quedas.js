@@ -126,5 +126,9 @@ monthSelector.addEventListener('change', () => {
     fetchDataAndUpdateChart();
 });
 
+function goBack() {
+    event.preventDefault();
+    window.history.go(-1);
+}
 
 

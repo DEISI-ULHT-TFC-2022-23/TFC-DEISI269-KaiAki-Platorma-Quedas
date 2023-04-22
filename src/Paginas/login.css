@@ -24,7 +24,18 @@ body {
     min-height: 100vh;
 }
 
+.link-style {
+    background: none;
+    border: none;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 18px;
+}
 
+.link-style:hover {
+    text-decoration: underline;
+}
 
 .container {
     width: 80%;
