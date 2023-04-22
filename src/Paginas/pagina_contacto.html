@@ -12,8 +12,8 @@
 
     <div class="container">
         <h1 class="title">Contacte-nos</h1>
-        <p class="email">Email: <a href="mailto:contact@domain.com">contact@domain.com</a></p>
-        <a href="index.html" class="feedback-btn">Feedback</a>
+<a href="#" class="feedback-btn" onclick="sendFeedback()">Feedback</a>
+
 <a href="#" onclick="goBack()" class="back-btn">Voltar</a>
 
 
@@ -24,6 +24,11 @@
                 event.preventDefault();
             window.history.go(-1);
     }
+        function sendFeedback() {
+            window.location.href = "pagina_inicial.html";
+            window.open('mailto:testmailkaikai@gmail.com');
+        }
+    
     </script>
 
     </script>

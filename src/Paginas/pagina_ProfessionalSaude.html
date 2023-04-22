@@ -13,33 +13,45 @@
 <body>
     <!-- Existing header and main content -->
 
-    <section class="warnings">
+    <section class="warnings" id="avisos-quedas">
         <div class="sidebar">
             <div class="doctor">
                 <i class="fas fa-user-md"></i>
                 <span>Dr. X</span>
             </div>
             <ul>
+               <a href="pagina_ProfessionalSaude.html">
                 <li>
                     <i class="fas fa-home"></i>
-                    <span>Home</span>
+                    <span> Home</span>
                 </li>
-                <li>
+            </a>
+
+            <a href="pagina_listaPacientes.html"> <li>
                 <i class="fas fa-users"></i>
                 <span>Lista Pacientes</span>
-                </li>
-                <li>
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <span>Avisos Queda</span>
-                </li>
-                <li>
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span>Logout</span>
-                </li>
-                <li>
-                    <i class="fas fa-cog"></i>
-                    <span>Definições</span>
-                </li>
+            </li>    </a>
+         <a href="#avisos-quedas">
+
+<li>
+    <i class="fas fa-exclamation-triangle"></i>
+    <span>Avisos Queda</span>
+</li>
+
+         </a>
+              
+                <a href="#">
+                    <li>
+                        <i class="fas fa-sign-out-alt"></i>
+                         <span> Logout</span>
+                     </li>
+                </a>
+                <a href="pagina_definicoes.html">
+                    <li>
+                        <i class="fas fa-cog"></i>
+                        <span> Definições</span>
+                    </li>
+                </a>
             </ul>
         </div>
         <div class="content">
@@ -58,16 +70,18 @@
                     <li>Tem Diabetes: Sim</li>
                     <li>
                         <i class="fas fa-calendar-alt"></i>
-                        Data Queda: 01/04/2023
+                        Data Queda: 02/04/2023
                     </li>
                     <li>
                         <i class="fas fa-thermometer-half"></i>
-                        Temperatura Momento da Queda: 36.5ºC
+                        Temperatura Momento da Queda: 37.5ºC
                     </li>
-                    <li>
-                        <i class="fas fa-info-circle"></i>
-                        Mais informações
-                    </li>
+                          <a href="pagina_maisInfo.html">
+                        <li>
+                            <i class="fas fa-info-circle"></i>
+                            Mais informações
+                        </li>
+                    </a>
 
                     <li>
                         <i class="fas fa-wifi"></i>
@@ -103,6 +117,28 @@
             console.error('Erro ao buscar a potência do sinal:', error);
         }
     }
+
+       document.getElementById("export-csv-btn").addEventListener("click", function () {
+            const data = [
+                ["Nome", "Idade", "Tem Diabetes", "Data Queda", "Temperatura Momento da Queda", "Received Signal Strength"],
+                ["Paciente Y", 55, "Sim", "01/04/2023", "36.5ºC", "-- dBm"]
+            ];
+
+            let csvContent = "data:text/csv;charset=utf-8,";
+
+            data.forEach(function (rowArray) {
+                let row = rowArray.join(",");
+                csvContent += row + "\r\n";
+            });
+
+            let encodedUri = encodeURI(csvContent);
+            let link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "dados_paciente.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
 
     fetchSignalStrength();
 
