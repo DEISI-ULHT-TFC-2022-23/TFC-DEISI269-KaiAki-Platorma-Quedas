@@ -20,6 +20,41 @@ const fallData = {
     }]
 };
 
+function convertChartDataToCSV(chartData, selectedMonth) {
+    const monthNames = [
+        'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+        'Julho', 'Agosto', 'Setembro', 'Octobro', 'Novembro', 'Dezembro'
+    ];
+    let csvContent = `data:text/csv;charset=utf-8,Mês: ${monthNames[selectedMonth - 1]}\r\nDia do Mês,Quedas\r\n`;
+
+    chartData.labels.forEach((label, index) => {
+        let rowData = `${label},${chartData.datasets[0].data[index]}\r\n`;
+        csvContent += rowData;
+    });
+
+    return csvContent;
+}
+
+function downloadCSV() {
+    const selectedMonth = monthSelector.value;
+    const csvContent = convertChartDataToCSV(chart.data, selectedMonth);
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "Historico_Quedas.csv");
+    document.body.appendChild(link);
+
+    link.click();
+    document.body.removeChild(link);
+}
+
+
+
+// Add this at the end of your script
+const downloadBtn = document.getElementById("download-btn");
+downloadBtn.addEventListener("click", downloadCSV);
+
+
 const chart = new Chart(ctx, {
     type: 'bar',
     data: fallData,
