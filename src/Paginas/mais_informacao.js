@@ -94,6 +94,30 @@ const temperatureChart = new Chart(temperatureCtx, {
 
 });
 
+const automaticSweepBtn = document.getElementById("automatic-sweep-btn");
+
+async function executeAutomaticSweep() {
+    try {
+        const response = await fetch("/api/automatic-sweep", {
+            method: "POST",
+        });
+
+        const result = await response.json();
+
+        if (result.status === "success") {
+            alert("Varrimento automático iniciado com sucesso!");
+        } else {
+            alert("Ocorreu um erro ao iniciar o varrimento automático. Por favor, tente novamente.");
+        }
+    } catch (error) {
+        console.error("Erro ao iniciar o varrimento automático:", error);
+        alert("Ocorreu um erro ao iniciar o varrimento automático. Por favor, tente novamente.");
+    }
+}
+
+automaticSweepBtn.addEventListener("click", executeAutomaticSweep);
+
+
 // Prepare fall chart
 const fallData = {
     labels: [], // Fetch labels from NestJS backend
