@@ -6,3 +6,7 @@ Esta plataforma aliada à tecnologia, é uma solução acessível, económica e 
 numa ferramenta essencial na área da saúde, no que diz respeito à deteção, notificação e
 prevenção de quedas.
 
+
+
+
+
