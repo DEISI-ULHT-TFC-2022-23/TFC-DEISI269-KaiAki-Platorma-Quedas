@@ -207,6 +207,12 @@ const fallChart = new Chart(fallCtx, {
     }
 });
 
+function getCurrentTime() {
+    const now = new Date();
+    return now.toLocaleTimeString();
+}
+
+
 // Adicione isso ao seu arquivo JavaScript
 const lowerLimitInput = document.getElementById("lower-limit");
 const lowerLimitValue = document.getElementById("lower-limit-value");
@@ -273,27 +279,56 @@ function goBack() {
 
 const modeSwitchBtn = document.getElementById("mode-switch-btn");
 let realtimeMode = false;
+let socket;
 
 function switchMode() {
     realtimeMode = !realtimeMode;
 
     if (realtimeMode) {
-        modeSwitchBtn.textContent = "Mudar para modo em tempo real";
-        // Ativar modo em tempo real
-        // 1. Conectar-se ao WebSocket para receber dados em tempo real
-        // 2. Atualizar gráficos em tempo real com os dados recebidos
-        // 3. Adicionar gráfico de posição corporal
-    } else {
         modeSwitchBtn.textContent = "Mudar para modo histórico";
-        // Desativar modo em tempo real
-        // 1. Desconectar-se do WebSocket
-        // 2. Parar de atualizar gráficos em tempo real
-        // 3. Remover gráfico de posição corporal
-        // 4. Atualizar gráficos com dados históricos (fetchDataAndUpdateCharts())
+
+        socket = io('http://localhost:3000');// Connect to the Socket.IO server
+
+        socket.on('connect_error', (error) => {
+            console.error("Error connecting to socket server:", error);
+            alert("Could not connect to real-time data server. Switching back to historical mode.");
+            switchMode(); // Switch back to historical mode
+        });
+
+
+
+        socket.on("data", (data) => {
+            // Update temperature chart
+            temperatureChart.data.labels.push(getCurrentTime());
+            temperatureChart.data.datasets[0].data.push(data.temperature);
+            temperatureChart.update();
+
+            // Update fall chart
+            fallChart.data.labels.push(getCurrentTime());
+            fallChart.data.datasets[0].data.push(
+                Math.sqrt(
+                    Math.pow(data.accelerationX, 2) +
+                    Math.pow(data.accelerationY, 2) +
+                    Math.pow(data.accelerationZ, 2)
+                )
+            );
+            fallChart.update();
+        });
+
+    } else {
+        modeSwitchBtn.textContent = "Mudar para modo em tempo real";
+
+        if (socket) {
+            socket.disconnect(); // Disconnect from the Socket.IO server
+        }
+
+        // Fetch data and update charts with historical data
+        fetchDataAndUpdateCharts();
     }
 }
 
 modeSwitchBtn.addEventListener("click", switchMode);
+
 
 
 
@@ -306,7 +341,7 @@ saveLimitsBtn.addEventListener("click", saveTemperatureLimits);
 async function fetchDataAndUpdateCharts() {
     try {
         const selectedMonth = monthSelector.value;
-        const response = await fetch(`/ api / data ? month = ${ selectedMonth } `);
+        const response = await fetch(`/ api / data ? month = ${selectedMonth} `);
         const data = await response.json();
 
         // Update temperature chart

@@ -1,8 +1,4 @@
-export class UpdateserDto {
-
+export type UpdateUserDto ={
     username: string;
     password: string;
-    email: string;
-
-
 }

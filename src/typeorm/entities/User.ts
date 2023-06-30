@@ -1,29 +1,27 @@
-import { IsEmail } from "class-validator";
 import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Profile } from "./Profile";
 
-@Entity({ name: 'users' })
-export class User{
-    @PrimaryGeneratedColumn( {type:'bigint'})
-    id:number;
+@Entity({name: 'users'})
+export class User {
 
-    @Column({type:'varchar'})
-    password: string;
+  @PrimaryGeneratedColumn({ type: 'bigint' })
+  id: number;
 
-    @Column()
-    createdAt:  Date;
+  @Column({ type: 'varchar', unique: true , nullable: true})
+  username: string;
 
-    @Column({ unique: true})
-    email: string;
-    
-    @Column({nullable: true})
-    authStrategy: string;
+  @Column({ type: 'varchar', nullable: true})
+  password: string;  
 
-    @OneToOne(() => Profile )
+  @Column({ type: 'datetime' })
+  data_criacao: Date;
+
+
+  @Column({nullable: true})
+  authStrategy: string;
+
+  @OneToOne(() => Profile )
     @JoinColumn()
     profile: Profile
-
-
-    
 
 }

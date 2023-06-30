@@ -1,16 +1,4 @@
-import { IsNotEmpty, IsEmail, IsStrongPassword } from "class-validator";
+import { PickType } from '@nestjs/mapped-types';
+import { User } from 'src/typeorm/entities/User';
 
-export class CreateUserDto{
-
-
-    @IsStrongPassword()
-    @IsNotEmpty()
-    password:string;
-
-    
-    @IsEmail()
-    @IsNotEmpty()
-    email:  string;
-    
-
-}
+export class CreateUserDto extends PickType(User, ['username', 'password'] as const) {}

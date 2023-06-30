@@ -1,66 +1,57 @@
-import { Column, Double, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
-import { HistoricoQueda } from "./HistoricoQuedas";
-import { ProfessionalSaude } from "./ProfessionalSaude";
-
-@Entity({name:'patients'})
-export class Patient{
-    @PrimaryGeneratedColumn({ type: 'bigint' })
+import {
+    Entity,
+    PrimaryGeneratedColumn,
+    Column,
+    OneToMany,
+    OneToOne,
+    JoinColumn,
+  } from 'typeorm';
+  import { PacienteProfissional } from './pacienteProfissional.entity';
+  import { Queda } from './queda';
+import { forwardRef } from '@nestjs/common';
+  
+  @Entity('paciente')
+  export class Paciente {
+    @PrimaryGeneratedColumn({ unsigned: true })
     id: number;
-
-    @Column()
-     nome: string;
-
-    @Column()
-    numeroTelefone: string;
-
-    @Column()
+  
+    @Column({ type: 'varchar', length: 128 })
+    primeiro_nome: string;
+  
+    @Column({ type: 'varchar', length: 128 })
+    sobrenome: string;
+  
+    @Column({ type: 'varchar', length: 128 })
+    numero_telefone: string;
+  
+    @Column({ type: 'varchar', length: 128 })
     email: string;
-
-    @Column()
-    password:string;
-
-    @Column()
+  
+    @Column({ type: 'double' })
     altura: number;
-
-    @Column()
+  
+    @Column({ type: 'double' })
     peso: number;
+  
+    @Column({ type: 'varchar', length: 255 })
+    password: string;
+  
+    @Column({ type: 'varchar', length: 255 })
+    password_encriptada: string;
+  
+    @Column({ type: 'tinyint' })
+    diabetes: boolean;
+  
+    @Column({ type: 'datetime' })
+    data_nascimento: Date;
+  
+    @Column({ type: 'datetime' })
+    data_criacao: Date;
+  
+    @OneToMany(() => Queda, (queda) => queda.paciente)
+    quedas: Queda[];
 
-    @Column({type:"double"})
-    tempQueda: number;
+  
 
-    @Column({ type: "double" })
-    tempMax: number;
-
-    @Column({ type: "double" })
-    tempMin: number;
-
-
-    @Column( { type: "datetime"})
-    createdAt: Date;
-
-    @Column()
-    idade: number;
-
-
-    @Column()
-    datanascimento: Date;
-
-    
-   @OneToOne( () => HistoricoQueda)
-   @JoinColumn()
-   historicoQueda: HistoricoQueda
-
-
-
-    @OneToOne(() => ProfessionalSaude)
-    @JoinColumn()
-    professionalSaude: ProfessionalSaude
-
-
-
-    @Column()
-    diabetes : boolean;
-    
-    @Column({ nullable: true })
-    authStrategy: string;
-}
+   
+  }

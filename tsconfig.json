@@ -1,7 +1,5 @@
 {
   "compilerOptions": {
-      "strict": true,
-    "alwaysStrict": false,
     "module": "commonjs",
     "declaration": true,
     "removeComments": true,
@@ -18,9 +16,6 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false,
-    "moduleResolution": "node",
-
-
+    "noFallthroughCasesInSwitch": false
   }
 }

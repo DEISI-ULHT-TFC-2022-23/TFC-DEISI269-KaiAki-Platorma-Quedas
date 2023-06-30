@@ -1,42 +1,16 @@
-import { Exclude } from "class-transformer";
-import { Double } from "typeorm";
-
 export type CreateUserParams ={
-    
+    username: string;
     password: string;
-    email:string;
-
 }
 
-export type UpdateUserParams = {
-  
+export type UpdateUserParams ={
+    username: string;
     password: string;
-    email: string;
-
 }
 
-export type CreateUserProfileParams = {
-    firstName: string;
-
+export type CreateUserProfileParams={
+    firstName:string;
     lastName: string;
-
-    age: number;
-    dob: string;
-}
-
-
-export type CreatePatientParams = {
-
-    password: string;
-    email: string;
-
-}
-
-export class SerializedUser {
-
-    @Exclude()
-    password: string;
-
-
-    email: string;
+    age:number;
+    dob:string;
 }
